@@ -9,7 +9,7 @@ in another classic form:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
          Aaron Wilkin, their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 # -----------------------------------------------------------------------------
@@ -28,6 +28,7 @@ def main():
     run_test_count_sines_from()
     run_test_count_sines_vs_cosines()
 
+import math as m
 
 def run_test_sum_more_cosines():
     """ Tests the   sum_more_cosines   function. """
@@ -66,17 +67,33 @@ def run_test_sum_more_cosines():
     else:
         print('       actual:  ', answer)
 
+    expected = 1.54455  # This is APPROXIMATELY the correct answer.
+    answer = sum_more_cosines(12, 19)
+    print('Test 2 expected:', expected, '(approximately)')
+    if answer is not None:
+        print('       actual:  ', round(answer, 5))
+    else:
+        print('       actual:  ', answer)
+
+    expected = 1.19859  # This is APPROXIMATELY the correct answer.
+    answer = sum_more_cosines(4, 8)
+    print('Test 3 expected:', expected, '(approximately)')
+    if answer is not None:
+        print('       actual:  ', round(answer, 5))
+    else:
+        print('       actual:  ', answer)
+
     # -------------------------------------------------------------------------
-    # TODO: 2 (continued).
+    # DONE: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
     # -------------------------------------------------------------------------
 
-
-def sum_more_cosines(m, n):
+#                     I did them above before I read this
+def sum_more_cosines(a, n):
     """
-    What comes in:  Integers m and n, with m <= n.
+    What comes in:  Integers a and n, with m <= n.
     What goes out:  Returns the sum
-       cos(m) + cos(m+1) + cos(m+2) +  ...  cos(n)
+       cos(a) + cos(a+1) + cos(a+2) +  ...  cos(n)
     Side effects:   None.
     Examples:
       -- sum_more_cosines(0, 3)  returns
@@ -87,7 +104,7 @@ def sum_more_cosines(m, n):
          which is approximately 0.02082.
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #   That is called TEST-DRIVEN DEVELOPMENT (TDD).
     #
@@ -98,12 +115,16 @@ def sum_more_cosines(m, n):
     #   Just   range(blah)   where blah is a single variable.
     #   Reason: To ensure that you get more practice using expressions.
     # -------------------------------------------------------------------------
-
+    total=0
+    for k in range(a,n+1):
+        print (k, total)
+        total = total + m.cos(k)
+    return total
 
 def run_test_count_sines_from():
     """ Tests the   count_sines_from   function. """
     # -------------------------------------------------------------------------
-    # TODO: 4. Implement this TEST function.
+    # DONE: 4. Implement this TEST function.
     #   It TESTS the  count_sines_from  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -122,14 +143,38 @@ def run_test_count_sines_from():
     print('       actual:  ', answer)
 
     # -------------------------------------------------------------------------
-    # TODO: 4 (continued).
+    # DONE: 4 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # -------------------------------------------------------------------------
+    expected = 3
+    answer = count_sines_from(4, 6)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 1
+    answer = count_sines_from(9, 9)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 31
+    answer = count_sines_from(13, 60)
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 61
+    answer = count_sines_from(9, 99)
+    print('Test 5 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 55
+    answer = count_sines_from(120, 200)
+    print('Test 6 expected:', expected)
+    print('       actual:  ', answer)
 
 
-def count_sines_from(m, n):
+def count_sines_from(a, n):
     """
-    What comes in:  Integers m and n, with m <= n.
+    What comes in:  Integers a and n, with a <= n.
     What goes out:  Returns the number of integers from m to n,
        inclusive, whose sine is less than 0.5.
     Side effects:   None.
@@ -147,19 +192,23 @@ def count_sines_from(m, n):
       -- count_sines_from(9, 9)  returns  1
     """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # DONE: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # -------------------------------------------------------------------------
-
+    count = 0
+    for k in range(a,n+1):
+        if m.sin(k) < 0.5:
+            count=count+1
+    return count
 
 def run_test_count_sines_vs_cosines():
     """ Tests the   count_sines_vs_cosines   function. """
     # -------------------------------------------------------------------------
-    # TODO: 6. Implement this TEST function.
+    # DONE: 6. Implement this TEST function.
     #   It TESTS the  count_sines_vs_cosines  function defined below.
     #   Include at least **   6   ** tests (we wrote one for you).
     #              ** Yes, 6 (six) tests. **
@@ -178,14 +227,38 @@ def run_test_count_sines_vs_cosines():
     print('       actual:  ', answer)
 
     # -------------------------------------------------------------------------
-    # TODO: 6 (continued).
+    # DONE: 6 (continued).
     # Below this comment, add 5 more test cases of your own choosing.
     # -------------------------------------------------------------------------
+    expected = 2501
+    answer = count_sines_vs_cosines(2500)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 6
+    answer = count_sines_vs_cosines(5)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 2501
+    answer = count_sines_vs_cosines(200)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 51
+    answer = count_sines_vs_cosines(52)
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 82
+    answer = count_sines_vs_cosines(81)
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
 
 
-def count_sines_vs_cosines(m):
+def count_sines_vs_cosines(a):
     """
-    What comes in:  A non-negative integer m.
+    What comes in:  A non-negative integer a.
     What goes out:  Returns the number of integers from -m to m,
        inclusive, whose sine is greater than its cosine.
     Side effects:   None.
@@ -209,14 +282,18 @@ def count_sines_vs_cosines(m):
       -- Also:  count_sines_vs_cosines(101) returns 100 (trust me!)
     """
     # -------------------------------------------------------------------------
-    # TODO: 7. Implement and test this function.
+    # DONE: 7. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     # IMPORTANT: As in previous problems in this session,
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # -------------------------------------------------------------------------
-
+    count=0
+    for k in range(-a,a+1):
+        if m.sin(k)>m.cos(k):
+            count=count+1
+    return(count)
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
