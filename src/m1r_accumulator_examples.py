@@ -10,7 +10,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 
 ###############################################################################
 #
-# TODO: 2.
+# DONE: 2.
 #   RUN this program, then READ its code.
 #     Then answer the following, GETTING HELP AS NEED!  (Ask questions!!!)
 #     Write your answers in any reasonable way (your choice).
@@ -112,7 +112,7 @@ def main():
     run_test_summing_example()
     run_test_counting_example()
     run_test_draw_row_of_circles()
-
+    run_test(6,7)
 
 def run_test_summing_example():
     """ Tests the   summing_example   function. """
@@ -327,6 +327,22 @@ def draw_row_of_circles(n, starting_point, color, window):
         x = x + diameter
 
     window.render()
+
+def run_test(tid,pid):
+    a=0
+    if geometric(tid, pid) is True:
+        a=1
+    if weight(tid, pid) is True:
+        a=a+1
+    if a==2:
+        return True
+    elif a<2:
+        print(pid,'does not fit on',tid)
+def geometric(x,y):
+    return True
+
+def weight(x,y):
+    return False
 
 
 # -----------------------------------------------------------------------------
