@@ -30,7 +30,7 @@ def main():
     run_test_draw_squares_from_circle()
     run_test_draw_circles_from_rectangle()
     run_test_draw_lines_from_rectangles()
-
+    test()
 
 def run_test_draw_squares_from_circle():
     """ Tests the   draw_squares_from_circle  function. """
@@ -111,6 +111,8 @@ def draw_squares_from_circle(n, circle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ###########################################################################
     # -------------------------------------------------------------------------
+
+
 
     circle.attach_to(window)
     window.render()
@@ -372,8 +374,27 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
         window.render(1/25)
 
 
+def test():
+    window=rg.RoseWindow()
+    c1 = rg.Circle(rg.Point(200, 200), 25)
+    c1.fill_color = 'blue'
+    c1.attach_to(window)
+    window.render(1)
+    c2 = c1
+    c2.fill_color = 'red'
+    c2.attach_to(window)
+    window.render(1)
+    c1.radius = 77
+
+    c2.fill_color = 'purple'
+    c2.attach_to(window)
+    window.render(1)
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
 main()
+
+
+
